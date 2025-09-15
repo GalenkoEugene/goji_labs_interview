@@ -43,7 +43,7 @@ paths:
         '422':
           description: schedule conflict
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000
