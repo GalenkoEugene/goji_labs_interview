@@ -1,0 +1,49 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/students/{student_id}/schedule":
+    get:
+      summary: Retrieves the schedule for a student
+      tags:
+      - Student Schedule
+      parameters:
+      - name: student_id
+        in: path
+        description: ID of the student
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/api/v1/students/{student_id}/sections/{section_id}":
+    post:
+      summary: Adds a section to a student schedule
+      tags:
+      - Student Schedule
+      parameters:
+      - name: student_id
+        in: path
+        description: ID of the student
+        required: true
+        schema:
+          type: string
+      - name: section_id
+        in: path
+        description: ID of the section to add
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: section added
+        '422':
+          description: schedule conflict
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
