@@ -28,8 +28,8 @@ section_cs_mwf = Section.create!(
   subject: cs101,
   teacher: ada,
   classroom: turing_auditorium,
-  start_time: "2000-01-01 08:00:00",
-  end_time: "2000-01-01 08:50:00",
+  start_time: "08:00",
+  end_time: "08:50",
   days: [ "Mon", "Wed", "Fri" ]
 )
 
@@ -37,8 +37,8 @@ section_chem_mwf = Section.create!(
   subject: chem1,
   teacher: marie,
   classroom: curie_lab,
-  start_time: "2000-01-01 09:00:00",
-  end_time: "2000-01-01 09:50:00",
+  start_time: "09:00",
+  end_time: "09:50",
   days: [ "Mon", "Wed", "Fri" ]
 )
 
@@ -46,8 +46,8 @@ section_phys_tth = Section.create!(
   subject: phys201,
   teacher: nikola,
   classroom: hopper_hall,
-  start_time: "2000-01-01 10:00:00",
-  end_time: "2000-01-01 11:20:00", # 80-minute class
+  start_time: "10:00",
+  end_time: "11:20", # 80-minute class
   days: [ "Tue", "Thu" ]
 )
 

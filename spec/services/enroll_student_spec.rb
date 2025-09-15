@@ -38,7 +38,7 @@ RSpec.describe EnrollStudent, type: :service do
       )
     end
 
-    context "if days are different" do
+    context "when days are different" do
       let(:second_section) do
         build_section(
           start_time: "08:00",
@@ -50,7 +50,7 @@ RSpec.describe EnrollStudent, type: :service do
       include_examples "enrollment attempt", expected_success: true
     end
 
-    context "if times don't overlap" do
+    context "when times don't overlap" do
       let(:second_section) do
         build_section(
           start_time: "09:00",
@@ -72,7 +72,7 @@ RSpec.describe EnrollStudent, type: :service do
       )
     end
 
-    context "if days and times both overlap" do
+    context "when days and times both overlap" do
       let(:second_section) do
         build_section(
           start_time: "08:30",
@@ -86,7 +86,22 @@ RSpec.describe EnrollStudent, type: :service do
         error: "Schedule conflict detected. This section overlaps with an existing one."
     end
 
-    context "if the same section is added again" do
+
+    context "when days and times both overlap at least one day" do
+      let(:second_section) do
+        build_section(
+          start_time: "08:30",
+          end_time: "09:20",
+          days: [ "Thu", "Fri" ]
+        )
+      end
+
+      include_examples "enrollment attempt",
+        expected_success: false,
+        error: "Schedule conflict detected. This section overlaps with an existing one."
+    end
+
+    context "when the same section is added again" do
       let(:second_section) { first_section }
 
       include_examples "enrollment attempt",
@@ -120,15 +135,15 @@ RSpec.describe EnrollStudent, type: :service do
       let(:first_section) do
         build_section(
           start_time: "08:00",
-          end_time: "09:00",
+          end_time: "09:20",
           days: [ "Tue" ]
         )
       end
 
       let(:second_section) do
         build_section(
-          start_time: "08:20",
-          end_time: "08:40",
+          start_time: "08:10",
+          end_time: "09:00",
           days: [ "Tue" ]
         )
       end
