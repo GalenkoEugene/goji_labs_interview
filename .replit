@@ -1,0 +1,7 @@
+modules = ["ruby-3.2", "bash", "web"]
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
+packages = ["libyaml", "libffi", "zlib", "openssl", "ruby", "bundler", "gcc", "gnumake", "pkg-config"]
