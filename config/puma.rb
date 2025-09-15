@@ -27,10 +27,7 @@
 threads_count = ENV.fetch("RAILS_MAX_THREADS", 3)
 threads threads_count, threads_count
 
-# Specifies the `port` that Puma will listen on to receive requests; default is 5000 for Replit.
-port ENV.fetch("PORT", 5000)
-
-# Bind to all interfaces (0.0.0.0) for Replit environment
+# Bind to all interfaces (0.0.0.0) on port 5000 for Replit environment
 bind "tcp://0.0.0.0:#{ENV.fetch('PORT', 5000)}"
 
 # Allow puma to be restarted by `bin/rails restart` command.
