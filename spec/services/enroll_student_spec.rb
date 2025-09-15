@@ -34,7 +34,7 @@ RSpec.describe EnrollStudent, type: :service do
       build_section(
         start_time: "08:00",
         end_time: "08:50",
-        days: ["Mon", "Wed", "Fri"]
+        days: [ "Mon", "Wed", "Fri" ]
       )
     end
 
@@ -43,7 +43,7 @@ RSpec.describe EnrollStudent, type: :service do
         build_section(
           start_time: "08:00",
           end_time: "08:50",
-          days: ["Tue", "Thu"]
+          days: [ "Tue", "Thu" ]
         )
       end
 
@@ -55,7 +55,7 @@ RSpec.describe EnrollStudent, type: :service do
         build_section(
           start_time: "09:00",
           end_time: "09:50",
-          days: ["Mon", "Wed", "Fri"]
+          days: [ "Mon", "Wed", "Fri" ]
         )
       end
 
@@ -68,7 +68,7 @@ RSpec.describe EnrollStudent, type: :service do
       build_section(
         start_time: "08:00",
         end_time: "08:50",
-        days: ["Mon", "Wed", "Fri"]
+        days: [ "Mon", "Wed", "Fri" ]
       )
     end
 
@@ -77,7 +77,7 @@ RSpec.describe EnrollStudent, type: :service do
         build_section(
           start_time: "08:30",
           end_time: "09:20",
-          days: ["Mon", "Wed", "Fri"]
+          days: [ "Mon", "Wed", "Fri" ]
         )
       end
 
@@ -100,7 +100,7 @@ RSpec.describe EnrollStudent, type: :service do
       build_section(
         start_time: "08:00",
         end_time: "08:50",
-        days: ["Mon"]
+        days: [ "Mon" ]
       )
     end
 
@@ -109,7 +109,7 @@ RSpec.describe EnrollStudent, type: :service do
         build_section(
           start_time: "08:50",
           end_time: "09:40",
-          days: ["Mon"]
+          days: [ "Mon" ]
         )
       end
 
@@ -121,7 +121,7 @@ RSpec.describe EnrollStudent, type: :service do
         build_section(
           start_time: "08:00",
           end_time: "09:00",
-          days: ["Tue"]
+          days: [ "Tue" ]
         )
       end
 
@@ -129,7 +129,7 @@ RSpec.describe EnrollStudent, type: :service do
         build_section(
           start_time: "08:20",
           end_time: "08:40",
-          days: ["Tue"]
+          days: [ "Tue" ]
         )
       end
 

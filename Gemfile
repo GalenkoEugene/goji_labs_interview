@@ -36,17 +36,17 @@ gem "thruster", require: false
 
 group :development, :test do
   gem "brakeman", require: false
-  gem 'pry'
-  gem 'rswag-api'
-  gem 'rswag-specs'
-  gem 'rswag-ui'
+  gem "pry"
+  gem "rswag-api"
+  gem "rswag-specs"
+  gem "rswag-ui"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
 
 group :test do
-  gem 'rspec-rails', '~> 6.0'
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem "rspec-rails", "~> 6.0"
+  gem "factory_bot_rails"
+  gem "faker"
 end

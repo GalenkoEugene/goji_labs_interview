@@ -1,3 +1,3 @@
 class Teacher < User
-  has_many :sections, foreign_key: 'teacher_id', dependent: :destroy
+  has_many :sections, foreign_key: "teacher_id", dependent: :destroy
 end
