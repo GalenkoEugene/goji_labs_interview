@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_15_130556) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_15_143738) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,7 +26,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_15_130556) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["section_id"], name: "index_enrollments_on_section_id"
-    t.index ["user_id"], name: "index_enrollments_on_user_id"
+    t.index ["user_id", "section_id"], name: "index_enrollments_on_user_id_and_section_id", unique: true
   end
 
   create_table "sections", force: :cascade do |t|
@@ -54,6 +54,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_15_130556) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_users_on_type"
   end
 
   add_foreign_key "enrollments", "sections"

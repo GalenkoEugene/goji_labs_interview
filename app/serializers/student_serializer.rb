@@ -9,6 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_type  (type)
+#
 class StudentSerializer < ActiveModel::Serializer
   attributes :id, :first_name, :last_name
 end

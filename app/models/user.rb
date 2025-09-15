@@ -9,6 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_type  (type)
+#
 class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true

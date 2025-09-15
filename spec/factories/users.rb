@@ -9,6 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_type  (type)
+#
 FactoryBot.define do
   factory :user do
     first_name { Faker::Name.first_name }

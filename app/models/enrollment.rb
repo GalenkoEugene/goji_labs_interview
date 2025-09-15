@@ -10,8 +10,8 @@
 #
 # Indexes
 #
-#  index_enrollments_on_section_id  (section_id)
-#  index_enrollments_on_user_id     (user_id)
+#  index_enrollments_on_section_id              (section_id)
+#  index_enrollments_on_user_id_and_section_id  (user_id,section_id) UNIQUE
 #
 # Foreign Keys
 #
