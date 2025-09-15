@@ -7,4 +7,21 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  namespace :api do
+    namespace :v1 do
+      resources :sections, only: [:index, :show]
+
+      resources :students, only: [] do
+        member do
+          # GET /api/v1/students/:id/schedule
+          get 'schedule', to: 'students#schedule'
+          # POST /api/v1/students/:id/sections/:section_id
+          post 'sections/:section_id', to: 'students#add_section'
+          # DELETE /api/v1/students/:id/sections/:section_id
+          delete 'sections/:section_id', to: 'students#remove_section'
+        end
+      end
+    end
+  end
 end
