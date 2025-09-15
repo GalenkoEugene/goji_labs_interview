@@ -1,5 +1,10 @@
 class Api::V1::StudentsController < ApplicationController
-  before_action :set_student
+  before_action :set_student, only: [ :schedule, :add_section, :remove_section ]
+
+  def index
+    @students = Student.all # TODO: pagination
+    render json: @students, each_serializer: StudentSerializer
+  end
 
   def schedule
     @schedule = @student.sections.includes(:subject, :teacher, :classroom)

@@ -8,7 +8,7 @@ class Section < ApplicationRecord
 
   validates :start_time, presence: true
   validates :end_time, presence: true
-  validates :days, presence: true
+  validates :days, presence: true, inclusion: { in: %w[Mon Tue Wed Thu Fri] }
 
   validate :duration_validation
 

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :sections, only: [ :index, :show ]
 
-      resources :students, only: [] do
+      resources :students, only: [ :index ] do
         member do
           # GET /api/v1/students/:id/schedule
           get "schedule", to: "students#schedule"

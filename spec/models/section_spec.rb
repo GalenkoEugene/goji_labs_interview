@@ -77,4 +77,17 @@ RSpec.describe Section, type: :model do
       expect(section.errors[:days]).to include("can't be blank")
     end
   end
+
+  describe "days validation" do
+    it "is invalid with unsupported days" do
+      section = build_section(start_time: "08:00", end_time: "08:50", days: [ "Sat", "Sun", "INVALID" ])
+      expect(section).not_to be_valid
+      expect(section.errors[:days]).to include("is not included in the list")
+    end
+
+    it "is valid with supported days" do
+      section = build_section(start_time: "08:00", end_time: "08:50", days: [ "Mon", "Wed", "Fri" ])
+      expect(section).to be_valid
+    end
+  end
 end

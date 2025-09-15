@@ -4,6 +4,39 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/sections":
+    get:
+      summary: list sections
+      tags:
+      - Sections
+      responses:
+        '200':
+          description: successful
+  "/api/v1/sections/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show section
+      tags:
+      - Sections
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
+  "/api/v1/students":
+    get:
+      summary: list students
+      tags:
+      - Students
+      responses:
+        '200':
+          description: successful
   "/api/v1/students/{student_id}/schedule":
     get:
       summary: Retrieves the schedule for a student

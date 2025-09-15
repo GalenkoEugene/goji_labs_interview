@@ -2,6 +2,30 @@ require 'rails_helper'
 require 'swagger_helper'
 
 RSpec.describe 'Students API', type: :request do
+  path '/api/v1/students' do
+    get('list students') do
+      tags 'Students'
+      produces 'application/json'
+
+      response(200, 'successful') do
+        let!(:students) { create_list(:student, 3) }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(data.length).to eq(3)
+        end
+      end
+    end
+  end
+
+
   path '/api/v1/students/{student_id}/schedule' do
     get('Retrieves the schedule for a student') do
       tags 'Student Schedule'
