@@ -4,15 +4,9 @@ RSpec.describe EnrollStudent, type: :service do
   subject(:enroll_student) { described_class }
 
   let(:student)   { create(:student) }
-  let(:teacher)   { create(:teacher) }
-  let(:subject_)  { create(:subject) }
-  let(:classroom) { create(:classroom) }
 
   def build_section(start_time:, end_time:, days:)
     create(:section,
-      subject: subject_,
-      teacher: teacher,
-      classroom: classroom,
       start_time: start_time,
       end_time: end_time,
       days: days

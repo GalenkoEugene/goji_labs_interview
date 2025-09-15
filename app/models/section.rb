@@ -18,7 +18,7 @@ class Section < ApplicationRecord
     return if end_time.blank? || start_time.blank?
 
     duration_in_minutes = ((end_time - start_time) / 60).to_i
-    unless [50, 80].include?(duration_in_minutes)
+    unless [ 50, 80 ].include?(duration_in_minutes)
       errors.add(:base, "Section duration must be 50 or 80 minutes")
     end
   end
