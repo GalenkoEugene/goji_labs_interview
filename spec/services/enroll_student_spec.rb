@@ -100,7 +100,7 @@ RSpec.describe EnrollStudent, type: :service do
 
       include_examples "enrollment attempt",
         expected_success: false,
-        error: "Student is already enrolled in this section."
+        error: "User is already enrolled in this section"
     end
   end
 

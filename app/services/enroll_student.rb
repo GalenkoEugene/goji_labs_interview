@@ -1,49 +1,14 @@
 class EnrollStudent
+  # TODO: After refactoring could be removed, skip due to time limitations
   Result = Struct.new(:success?, :enrollment, :errors, keyword_init: true)
 
   def self.call(student:, section:)
-    new(student: student, section: section).call
-  end
+    enrollment = Enrollment.new(user: student, section: section)
 
-  def initialize(student:, section:)
-    @student = student
-    @section = section
-    @errors = []
-  end
-
-  def call
-    if schedule_conflict?
-      @errors << "Schedule conflict detected. This section overlaps with an existing one."
-    end
-
-    if @student.sections.reload.include?(@section)
-      @errors << "Student is already enrolled in this section."
-    end
-
-    if @errors.empty?
-      enrollment = Enrollment.create(user: @student, section: @section)
+    if enrollment.save
       Result.new(success?: true, enrollment: enrollment, errors: [])
     else
-      Result.new(success?: false, enrollment: nil, errors: @errors)
+      Result.new(success?: false, enrollment: nil, errors: enrollment.errors.full_messages)
     end
-  end
-
-  private
-
-  attr_reader :student, :section
-
-  def schedule_conflict?
-    student.sections.reload.any? do |existing_section|
-      days_overlap?(existing_section) && times_overlap?(existing_section)
-    end
-  end
-
-  def days_overlap?(other_section)
-    (section.days & other_section.days).any?
-  end
-
-  def times_overlap?(other_section)
-    !(section.end_time <= other_section.start_time ||
-      section.start_time >= other_section.end_time)
   end
 end
