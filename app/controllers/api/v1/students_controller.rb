@@ -3,16 +3,20 @@ class Api::V1::StudentsController < ApplicationController
 
   def schedule
     @schedule = @student.sections.includes(:subject, :teacher, :classroom)
-    render json: @schedule
+    render json: @schedule, each_serializer: SectionSerializer
   end
 
   # POST /api/v1/students/:id/sections/:section_id
   def add_section
     section = Section.find(params[:section_id])
 
-    @student.sections << section
+    result = EnrollStudent.call(student: @student, section: section)
 
-    head :created
+    if result.success?
+      render json: result.enrollment, status: :created
+    else
+      render json: { errors: result.errors }, status: :unprocessable_entity
+    end
   end
 
   def remove_section
