@@ -34,7 +34,7 @@ RSpec.describe 'Students API', type: :request do
 
       response(201, 'section added') do
         let(:student) { create(:student) }
-        let(:section) { create(:section, days: 'TTh', start_time: '10:00:00', end_time: '11:20:00') }
+        let(:section) { create(:section, days: ["Tue", "Thu"], start_time: '10:00:00', end_time: '11:20:00') }
         let(:student_id) { student.id }
         let(:section_id) { section.id }
 
@@ -45,8 +45,8 @@ RSpec.describe 'Students API', type: :request do
 
       response(422, 'schedule conflict') do
         let(:student) { create(:student) }
-        let(:existing_section) { create(:section, days: 'MWF', start_time: '08:00:00', end_time: '08:50:00') }
-        let(:conflicting_section) { create(:section, days: 'MWF', start_time: '08:30:00', end_time: '09:20:00') }
+        let(:existing_section) { create(:section, days: ["Mon", "Wed", "Fri"], start_time: '08:00:00', end_time: '08:50:00') }
+        let(:conflicting_section) { create(:section, days: ["Mon", "Wed", "Fri"], start_time: '08:30:00', end_time: '09:20:00') }
         let(:student_id) { student.id }
         let(:section_id) { conflicting_section.id }
 

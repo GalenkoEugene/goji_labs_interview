@@ -3,7 +3,7 @@ FactoryBot.define do
     association :teacher
     association :subject
     association :classroom
-    days { "MWF" }
+    days { ["Mon", "Wed", "Fri"] }
     start_time { "09:00:00" }
     end_time { "09:50:00" }
   end

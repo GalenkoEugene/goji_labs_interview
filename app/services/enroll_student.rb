@@ -16,7 +16,7 @@ class EnrollStudent
       @errors << "Schedule conflict detected. This section overlaps with an existing one."
     end
 
-    if @student.sections.include?(@section)
+    if @student.sections.reload.include?(@section)
       @errors << "Student is already enrolled in this section."
     end
 
@@ -33,16 +33,17 @@ class EnrollStudent
   attr_reader :student, :section
 
   def schedule_conflict?
-    student.sections.any? do |existing_section|
+    student.sections.reload.any? do |existing_section|
       days_overlap?(existing_section) && times_overlap?(existing_section)
     end
   end
 
   def days_overlap?(other_section)
-    section.days.chars.any? { |day| other_section.days.include?(day) }
+    (section.days & other_section.days).any?
   end
 
   def times_overlap?(other_section)
-    (section.start_time < other_section.end_time) && (section.end_time > other_section.start_time)
+    !(section.end_time <= other_section.start_time ||
+      section.start_time >= other_section.end_time)
   end
 end

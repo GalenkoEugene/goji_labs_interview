@@ -26,11 +26,11 @@ curie_lab = Classroom.create!(name: "Curie Lab 303")
 puts "Creating Sections..."
 section_cs_mwf = Section.create!(
   subject: cs101,
-  teacher: ada, # Assign the teacher object directly
+  teacher: ada,
   classroom: turing_auditorium,
   start_time: "2000-01-01 08:00:00",
   end_time: "2000-01-01 08:50:00",
-  days: "MWF"
+  days: ["Mon", "Wed", "Fri"]
 )
 
 section_chem_mwf = Section.create!(
@@ -39,7 +39,7 @@ section_chem_mwf = Section.create!(
   classroom: curie_lab,
   start_time: "2000-01-01 09:00:00",
   end_time: "2000-01-01 09:50:00",
-  days: "MWF"
+  days: ["Mon", "Wed", "Fri"]
 )
 
 section_phys_tth = Section.create!(
@@ -48,7 +48,7 @@ section_phys_tth = Section.create!(
   classroom: hopper_hall,
   start_time: "2000-01-01 10:00:00",
   end_time: "2000-01-01 11:20:00", # 80-minute class
-  days: "TTh"
+  days: ["Tue", "Thu"]
 )
 
 # Enroll students in sections
