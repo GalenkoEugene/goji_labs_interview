@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # API root endpoint - returns JSON instead of HTML
-  root 'application#root'
+  root "application#root"
 end

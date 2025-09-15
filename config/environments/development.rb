@@ -37,7 +37,7 @@ Rails.application.configure do
 
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 5000 }
-  
+
   # Allow requests from all hosts (required for Replit proxy)
   config.hosts.clear
 

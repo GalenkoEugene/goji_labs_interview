@@ -40,7 +40,7 @@ gem "active_model_serializers"
 
 group :development, :test do
   gem "brakeman", require: false
-  gem 'pry'
+  gem "pry"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -54,6 +54,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 6.0'
-  gem 'factory_bot_rails'
+  gem "rspec-rails", "~> 6.0"
+  gem "factory_bot_rails"
 end
