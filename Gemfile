@@ -35,6 +35,7 @@ gem "thruster", require: false
 gem "rack-cors"
 
 group :development, :test do
+  gem "annotaterb"
   gem "brakeman", require: false
   gem "pry"
   gem "rswag-api"
