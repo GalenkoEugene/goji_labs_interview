@@ -23,6 +23,8 @@
 #  fk_rails_...  (subject_id => subjects.id)
 #
 class Section < ApplicationRecord
+  AVAILABLE_DAYS = %w[Mon Tue Wed Thu Fri].freeze
+
   belongs_to :subject
   belongs_to :classroom
   belongs_to :teacher, class_name: "Teacher"
@@ -32,18 +34,7 @@ class Section < ApplicationRecord
 
   validates :start_time, presence: true
   validates :end_time, presence: true
-  validates :days, presence: true, inclusion: { in: %w[Mon Tue Wed Thu Fri] }
+  validates :days, presence: true, inclusion: { in: AVAILABLE_DAYS }
 
-  validate :duration_validation
-
-  private
-
-  def duration_validation
-    return if end_time.blank? || start_time.blank?
-
-    duration_in_minutes = ((end_time - start_time) / 60).to_i
-    unless [ 50, 80 ].include?(duration_in_minutes)
-      errors.add(:base, "Section duration must be 50 or 80 minutes")
-    end
-  end
+  validates_with SectionTimeValidator
 end
