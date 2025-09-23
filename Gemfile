@@ -34,6 +34,8 @@ gem "thruster", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 gem "rack-cors"
 
+gem "prawn"
+
 group :development, :test do
   gem "annotaterb"
   gem "brakeman", require: false

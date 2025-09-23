@@ -22,6 +22,8 @@ Rails.application.routes.draw do
           post "sections/:section_id", to: "students#add_section"
           # DELETE /api/v1/students/:id/sections/:section_id
           delete "sections/:section_id", to: "students#remove_section"
+
+          get "download_schedule", to: "students#download_schedule"
         end
       end
     end

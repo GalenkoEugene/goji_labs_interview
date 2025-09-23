@@ -140,6 +140,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
+    matrix (0.4.3)
     method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.25.5)
@@ -174,6 +175,7 @@ GEM
     parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
+    pdf-core (0.10.0)
     pg (1.6.2)
     pg (1.6.2-aarch64-linux)
     pg (1.6.2-aarch64-linux-musl)
@@ -183,6 +185,10 @@ GEM
     pg (1.6.2-x86_64-linux-musl)
     pp (0.6.2)
       prettyprint
+    prawn (2.5.0)
+      matrix (~> 0.4)
+      pdf-core (~> 0.10.0)
+      ttfunk (~> 1.8)
     prettyprint (0.2.0)
     prism (1.5.1)
     pry (0.15.2)
@@ -326,6 +332,8 @@ GEM
     thruster (0.1.15-x86_64-darwin)
     thruster (0.1.15-x86_64-linux)
     timeout (0.4.3)
+    ttfunk (1.8.0)
+      bigdecimal (~> 3.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
@@ -359,6 +367,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   pg (~> 1.1)
+  prawn
   pry
   puma (>= 5.0)
   rack-cors

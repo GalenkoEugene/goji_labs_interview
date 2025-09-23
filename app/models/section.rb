@@ -37,4 +37,8 @@ class Section < ApplicationRecord
   validates :days, presence: true, inclusion: { in: AVAILABLE_DAYS }
 
   validates_with SectionTimeValidator
+
+  scope :overlapping, ->(start_time, end_time, days) do
+    where("days && ARRAY[?]::varchar[] AND NOT (end_time <= ? OR start_time >= ?)", days, start_time, end_time)
+  end
 end
