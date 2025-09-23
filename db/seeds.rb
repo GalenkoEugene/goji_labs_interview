@@ -1,9 +1,61 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+puts "Destroying all previous records..."
+User.destroy_all
+Section.destroy_all
+Subject.destroy_all
+Classroom.destroy_all
+
+puts "Creating Teachers..."
+ada = Teacher.create!(first_name: "Ada", last_name: "Lovelace")
+marie = Teacher.create!(first_name: "Marie", last_name: "Curie")
+nikola = Teacher.create!(first_name: "Nikola", last_name: "Tesla")
+
+puts "Creating Students..."
+alan = Student.create!(first_name: "Alan", last_name: "Turing")
+grace = Student.create!(first_name: "Grace", last_name: "Hopper")
+
+puts "Creating Subjects..."
+cs101 = Subject.create!(name: "Computer Science 101")
+chem1 = Subject.create!(name: "General Chemistry I")
+phys201 = Subject.create!(name: "University Physics II")
+
+puts "Creating Classrooms..."
+hopper_hall = Classroom.create!(name: "Hopper Hall 105")
+turing_auditorium = Classroom.create!(name: "Turing Auditorium")
+curie_lab = Classroom.create!(name: "Curie Lab 303")
+
+puts "Creating Sections..."
+section_cs_mwf = Section.create!(
+  subject: cs101,
+  teacher: ada,
+  classroom: turing_auditorium,
+  start_time: "08:00",
+  end_time: "08:50",
+  days: [ "Mon", "Wed", "Fri" ]
+)
+
+section_chem_mwf = Section.create!(
+  subject: chem1,
+  teacher: marie,
+  classroom: curie_lab,
+  start_time: "09:00",
+  end_time: "09:50",
+  days: [ "Mon", "Wed", "Fri" ]
+)
+
+section_phys_tth = Section.create!(
+  subject: phys201,
+  teacher: nikola,
+  classroom: hopper_hall,
+  start_time: "10:00",
+  end_time: "11:20", # 80-minute class
+  days: [ "Tue", "Thu" ]
+)
+
+# Enroll students in sections
+puts "Enrolling students..."
+Enrollment.create!(user: alan, section: section_cs_mwf)
+Enrollment.create!(user: alan, section: section_phys_tth)
+Enrollment.create!(user: grace, section: section_chem_mwf)
+Enrollment.create!(user: grace, section: section_phys_tth)
+
+puts "✅ Seeding complete!"

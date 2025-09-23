@@ -20,6 +20,8 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+gem "active_model_serializers", "~> 0.10.0"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -30,16 +32,24 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+gem "rack-cors"
+
+gem "prawn"
 
 group :development, :test do
+  gem "annotaterb"
   gem "brakeman", require: false
-  gem 'pry'
+  gem "pry"
+  gem "rswag-api"
+  gem "rswag-specs"
+  gem "rswag-ui"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
 
 group :test do
-  gem 'rspec-rails', '~> 6.0'
+  gem "rspec-rails", "~> 6.0"
+  gem "factory_bot_rails"
+  gem "faker"
 end
